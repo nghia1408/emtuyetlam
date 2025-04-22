@@ -68,7 +68,7 @@
         public static function getProductById($id) {
             try {
                 $db = DB::getInstance();
-                $stmt = $db->prepare("SELECT * FROM products WHERE id = :id");
+                $stmt = $db->prepare("SELECT products.*, category.name AS category_name FROM products JOIN category ON products.category_id = category.id WHERE products.id = :id");
                 $stmt->bindParam(':id', $id);
                 $stmt->execute();
                 $item = $stmt->fetch();
@@ -81,7 +81,7 @@
                         $item['price'],
                         $item['discount'],
                         $item['quantity'],
-                        $item['category_id'],
+$item['category_id'],
                         $item['image'],
                         $item['category_name']
                     );
@@ -99,7 +99,7 @@
                 $db = DB::getInstance();
 
                 // Tìm kiếm sản phẩm dựa trên tên hoặc mô tả sản phẩm
-                $stmt = $db->prepare("SELECT * FROM products WHERE name LIKE :search_query OR description LIKE :search_query");
+                $stmt = $db->prepare("SELECT products.*, category.name AS category_name FROM products JOIN category ON products.category_id = category.id WHERE products.name LIKE :search_query OR products.description LIKE :search_query");
                 $search_term = "%" . $search_query . "%";
                 $stmt->bindParam(':search_query', $search_term);
                 $stmt->execute();

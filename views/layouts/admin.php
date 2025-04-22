@@ -108,7 +108,7 @@
                 </a>
             </li>
             <li class="sidebar-list-item">
-                <a href="?controller=home&action=index">
+                <a href="?controller=account&action=logout">
                     <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="18"
