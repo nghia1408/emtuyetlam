@@ -89,7 +89,7 @@
                 </button>
             </div>
             <div class="product-cell category">
-                Danh Mục<button class="sort-button">
+                Mô Tả<button class="sort-button">
                     <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="16"
@@ -104,7 +104,7 @@
                 </button>
             </div>
             <div class="product-cell status-cell">
-                Tình Trạng<button class="sort-button">
+                Danh Mục Sale<button class="sort-button">
                     <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="16"
@@ -168,15 +168,15 @@
         <div class="products-row">
             <div class="product-cell image">
                 <!-- Hiển thị hình ảnh sản phẩm -->
-                <img src="<?= $product->image; ?>" alt="product" />
+                <img src="<?= $product->img; ?>" alt="product" />
                 <span><?= $product->name; ?></span>
             </div>
             <div class="product-cell category">
-                <span class="cell-label">Danh Mục:</span> <?= $product->desc; ?>
+                <span class="cell-label">Mô Tả:</span> <?= $product->desc; ?>
             </div>
             <div class="product-cell status-cell">
-                <span class="cell-label">Tình trạng:</span>
-                <span class="status active"><?= $product->qty > 0 ? 'Còn hàng' : 'Hết hàng'; ?></span>
+                <span class="cell-label">Danh Mục Sale:</span>
+                <span class="status active"><?= $product->category_name; ?></span>
             </div>
             <div class="product-cell sales">
                 <span class="cell-label">Lượt Bán:</span> <?= $product->discount; ?> <!-- Hoặc bạn có thể có một trường lượt bán -->

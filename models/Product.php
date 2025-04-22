@@ -11,8 +11,9 @@
         public $cate_id;
 
         public $img;
+        public $category_name;
 
-        function __construct($id, $name, $desc, $price, $discount, $qty, $cate_id, $img) {
+        function __construct($id, $name, $desc, $price, $discount, $qty, $cate_id, $img, $category_name) {
             $this->id = $id;
             $this->name = $name;
             $this->desc = $desc;
@@ -21,6 +22,7 @@
             $this->qty = $qty;
             $this->cate_id = $cate_id;
             $this->img = $img;
+            $this->category_name = $category_name;
         }
 
 
@@ -34,7 +36,7 @@
                     $stmt->bindParam(':category', $category);
                 } else {
                     // Nếu không có danh mục, lấy tất cả sản phẩm
-                    $stmt = $db->prepare("SELECT * FROM products;");
+                    $stmt = $db->prepare("SELECT products.*, category.name AS category_name FROM products JOIN category ON products.category_id = category.id;");
                 }
 
                 $stmt->execute();
@@ -49,7 +51,8 @@
                         $item['discount'],
                         $item['quantity'],
                         $item['category_id'],
-                        $item['image']
+                        $item['image'],
+                        $item['category_name']
                     );
                 }
 
@@ -79,7 +82,8 @@
                         $item['discount'],
                         $item['quantity'],
                         $item['category_id'],
-                        $item['image']
+                        $item['image'],
+                        $item['category_name']
                     );
                 } else {
                     return null;
@@ -110,7 +114,8 @@
                         $item['discount'],
                         $item['quantity'],
                         $item['category_id'],
-                        $item['image']
+                        $item['image'],
+                        $item['category_name']
                     );
                 }
 
@@ -119,6 +124,31 @@
                 return "Error";
             }
         }
+
+       public static function addProduct($name, $desc, $price, $cate_id, $img) {
+    try {
+        // Lấy đối tượng kết nối cơ sở dữ liệu
+        $db = DB::getInstance();
+
+        // Chuẩn bị câu lệnh SQL để thêm sản phẩm vào cơ sở dữ liệu
+        $stmt = $db->prepare("INSERT INTO products (name, description, price, category_id, image) 
+                              VALUES (:name, :desc, :price, :cate_id, :img)");
+
+        // Liên kết các tham số vào câu lệnh SQL
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':desc', $desc);
+        $stmt->bindParam(':price', $price);
+        $stmt->bindParam(':cate_id', $cate_id);
+        $stmt->bindParam(':img', $img);
+
+        // Thực thi câu lệnh SQL
+        return $stmt->execute();  // Trả về kết quả của việc thực thi câu lệnh
+    } catch (PDOException $e) {
+        // Trả về thông báo lỗi nếu có vấn đề trong quá trình thực thi
+        return "Error: " . $e->getMessage();
+    }
+}
+
 
 
     }
