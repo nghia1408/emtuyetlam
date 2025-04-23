@@ -14,8 +14,9 @@
         {
             if (isUserLoggedIn()) {
                 // Nếu đã đăng nhập, chuyển hướng về trang chủ
-                $user = unserialize(getUserLogin());
-                if ($user->role_id == 2) {
+                $user = getUserLoggedIn();
+
+                if ($user && $user->role_id == 2) {
                     redirect("?controller=dashboard&action=index");
                 } else {
                     redirect("?controller=home&action=index");

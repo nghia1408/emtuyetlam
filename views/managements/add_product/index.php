@@ -83,39 +83,38 @@
             </div>
           
             <div class="add-product-form">
-              <form>
-                <div class="form-group">
-                  <label for="productName" class="form-label">Tên sản phẩm</label>
-                  <input type="text" id="productName" class="form-control" placeholder="Nhập tên sản phẩm" required>
-                </div>
-          
-                <div class="form-group">
-                  <label for="price" class="form-label">Giá ($)</label>
-                  <input type="number" id="price" class="form-control" placeholder="Nhập giá" required>
-                </div>
-          
-                <div class="form-group">
-                  <label for="category" class="form-label">Danh mục</label>
-                  <select id="category" class="form-control">
-                    <option value="">Chọn danh mục</option>
-                    <option value="furniture">Đồ nội thất</option>
-                    <option value="decoration">Trang trí</option>
-                    <option value="kitchen">Nhà bếp</option>
-                    <option value="bathroom">Phòng tắm</option>
-                  </select>
-                </div>
-          
-                <div class="form-group">
-                  <label for="description" class="form-label">Mô tả</label>
-                  <textarea id="description" rows="4" class="form-control" placeholder="Nêu mô tả"></textarea>
-                </div>
-          
-                <div class="form-group">
-                  <label for="image" class="form-label">Hình ảnh sản phẩm</label>
-                  <input type="file" id="image" class="form-control">
-                </div>
-          
-                <button type="submit" class="app-content-headerButton">Lưu sản phẩm</button>
-              </form>
+                      <form method="POST" action="?controller=add_productManage&action=index">
+    <div class="form-group">
+        <label for="productName" class="form-label">Tên sản phẩm</label>
+        <input name="productName" type="text" id="productName" class="form-control" placeholder="Nhập tên sản phẩm" required>
+    </div>
+
+    <div class="form-group">
+        <label for="price" class="form-label">Giá ($)</label>
+        <input name="price" type="number" id="price" class="form-control" placeholder="Nhập giá" required>
+    </div>
+
+    <div class="form-group">
+        <label for="description" class="form-label">Mô tả</label>
+        <textarea name="description" id="description" rows="4" class="form-control" placeholder="Nêu mô tả"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="mainCategory" class="form-label">Danh mục chính</label>
+        <select name="mainCategory" id="mainCategory" class="form-control">
+            <option value="">Chọn danh mục chính</option>
+            <option value="1">Flash Sale</option>
+            <option value="2">Best Selling Products</option>
+            <option value="3">Our Products</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="imageUrl" class="form-label">URL hình ảnh sản phẩm</label>
+        <input name="imageUrl" type="text" id="imageUrl" class="form-control" placeholder="Nhập đường dẫn hình ảnh">
+    </div>
+
+    <button name="btn" type="submit" class="app-content-headerButton">Lưu sản phẩm</button>
+</form>
             </div>
           </div>

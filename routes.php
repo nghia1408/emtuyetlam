@@ -8,7 +8,7 @@
         'cart' => ['index'],
         'order' => ['index'],
         'product' => ['index','product_all','search'],
-        'dashboard' => ['index'],
+        'dashboard' => ['index','logout'],
         'managements' =>
             array(
                 'productManage' => ['index'],
