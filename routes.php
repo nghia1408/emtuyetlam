@@ -5,7 +5,7 @@
         'payment' => ['thanhtoan'],
         'about' => ['index'],
         'contact' => ['index'],
-        'cart' => ['index'],
+        'cart' => ['index', 'add', 'remove'],
         'order' => ['index'],
         'product' => ['index','product_all','search'],
         'dashboard' => ['index','logout'],

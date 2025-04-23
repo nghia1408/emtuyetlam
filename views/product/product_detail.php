@@ -2,57 +2,55 @@
     <?php if (isset($product)): ?>
         <div class="product-images">
             <div class="main-image">
-                <img src="<?= $product->img ?>" alt="<?= $product->name ?>" class="main-product-image" />
+                <img src="<?= htmlspecialchars($product->img) ?>" alt="<?= htmlspecialchars($product->name) ?>" class="main-product-image" />
             </div>
         </div>
 
         <div class="product-info">
-            <h1 class="product-title"><?= $product->name ?></h1>  <!-- Hiển thị tên sản phẩm -->
+            <h1 class="product-title"><?= htmlspecialchars($product->name) ?></h1>  <!-- Hiển thị tên sản phẩm -->
             <div class="product-rating">
                 <span class="rating">★★★★☆</span> <span>(150 Reviews)</span>  <!-- Có thể thay bằng dữ liệu thực tế -->
             </div>
-            <p class="product-price"><?= $product->price ?> đ</p>  <!-- Hiển thị giá sản phẩm -->
+            <p class="product-price"><?= number_format($product->price, 0, ',', '.') ?> đ</p>  <!-- Hiển thị giá sản phẩm -->
             <p class="product-description">
-                <?= $product->description ?>  <!-- Hiển thị mô tả sản phẩm -->
+                <?= htmlspecialchars($product->description) ?>  <!-- Hiển thị mô tả sản phẩm -->
             </p>
 
             <div class="product-options">
-                <label for="colours">Colours:</label>
-                <select id="colours" name="colours">
-                    <option value="red">Red</option>
-                    <option value="blue">Blue</option>
-                </select>
+                <form action="?controller=cart&action=add" method="POST">
+                    <!-- Các trường ẩn để gửi thông tin sản phẩm -->
+                    <input type="hidden" name="product_id" value="<?= htmlspecialchars($product->id) ?>">
+                    <input type="hidden" name="product_name" value="<?= htmlspecialchars($product->name) ?>">
+                    <input type="hidden" name="product_price" value="<?= $product->price ?>">
+                    <input type="hidden" name="product_image" value="<?= htmlspecialchars($product->img) ?>">
 
-                <label for="sizes">Size:</label>
-                <select id="sizes" name="sizes">
-                    <option value="xs">XS</option>
-                    <option value="s">S</option>
-                    <option value="m">M</option>
-                    <option value="l">L</option>
-                    <option value="xl">XL</option>
-                </select>
+                    <label for="colours">Màu sắc:</label>
+                    <select id="colours" name="colours">
+                        <option value="red">Đỏ</option>
+                        <option value="blue">Xanh</option>
+                    </select>
 
-                <label for="quantity">Quantity:</label>
-                <input
+                    <label for="quantity">Số lượng:</label>
+                    <input
                         type="number"
                         id="quantity"
                         name="quantity"
                         value="1"
                         min="1"
-                />
+                        style="width: 60px;"
+                    />
 
-                <a href="?controller=payment&action=thanhtoan" class="btn-buy">Buy Now</a>
-                <a href="?controller=cart&action=index" class="btn-buy">Add to cart</a>
-
+                    <button type="submit" class="btn-buy">Thêm vào giỏ hàng</button>
+                </form>
             </div>
 
             <div class="product-actions">
-                <p>Free Delivery</p>
-                <p>Return Delivery: Free 30 Days Delivery Returns. Details</p>
+                <p>Giao hàng miễn phí</p>
+                <p>Đổi trả: Miễn phí đổi trả trong 30 ngày. Xem chi tiết</p>
             </div>
         </div>
     <?php else: ?>
-        <p>Product not found.</p>  <!-- Nếu không có sản phẩm -->
+        <p>Không tìm thấy sản phẩm.</p>  <!-- Nếu không có sản phẩm -->
     <?php endif; ?>
 </div>
 <!--  -->
