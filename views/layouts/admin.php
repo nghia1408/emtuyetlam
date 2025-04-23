@@ -108,11 +108,7 @@
                 </a>
             </li>
             <li class="sidebar-list-item">
-<<<<<<< HEAD
                 <a href="?controller=dashboard&action=logout">
-=======
-                <a href="?controller=account&action=logout">
->>>>>>> 26bd9325d1406c96a66fb1b46ed21cb6053e2a56
                     <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="18"
