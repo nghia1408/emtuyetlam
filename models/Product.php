@@ -81,7 +81,11 @@
                         $item['price'],
                         $item['discount'],
                         $item['quantity'],
+<<<<<<< HEAD
                         $item['category_id'],
+=======
+$item['category_id'],
+>>>>>>> 26bd9325d1406c96a66fb1b46ed21cb6053e2a56
                         $item['image'],
                         $item['category_name']
                     );
