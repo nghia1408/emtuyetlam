@@ -220,15 +220,15 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <?php if ($totalPages > 1): ?>
         <div class="pagination">
             <?php if ($page > 1): ?>
-                <a href="/emtuyetlam/index.php?controller=product&action=index&page=<?= $page - 1 ?>">&laquo; Prev</a>
+                <a href="?controller=product&action=index&page=<?= $page - 1 ?>">&laquo; Prev</a>
             <?php endif; ?>
 
             <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                <a href="/emtuyetlam/index.php?controller=product&action=index&page=<?= $i ?>" <?= ($i == $page) ? 'class="active"' : '' ?>><?= $i ?></a>
+                <a href="?controller=product&action=index&page=<?= $i ?>" <?= ($i == $page) ? 'class="active"' : '' ?>><?= $i ?></a>
             <?php endfor; ?>
 
             <?php if ($page < $totalPages): ?>
-                <a href="/emtuyetlam/index.php?controller=product&action=index&page=<?= $page + 1 ?>">Next &raquo;</a>
+                <a href="?controller=product&action=index&page=<?= $page + 1 ?>">Next &raquo;</a>
             <?php endif; ?>
         </div>
     <?php endif; ?>
