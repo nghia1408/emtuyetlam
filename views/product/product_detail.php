@@ -27,7 +27,7 @@
                     <select id="colours" name="colours">
                         <option value="red">Đỏ</option>
                         <option value="blue">Xanh</option>
-                    </select> -->
+                    </select>dsfgfhsdfdsf -->
 
                     <label for="quantity">Số lượng:</label>
                     <input
