@@ -7,20 +7,23 @@ class ProductController extends BaseController{
         $this->folder = 'product';
     }
     public function index() {
+        $this->render('product_all');  // chỉ render product_all thôi
+    }
+    public function detail() {
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
-            $product = Product::getProductById($id);  // Lấy thông tin sản phẩm theo id
-
+            $product = Product::getProductById($id);
+    
             if ($product) {
-                $this->render('product_detail', array("product" => $product));  // Hiển thị trang chi tiết sản phẩm
+                $this->render('product_detail', array("product" => $product));
             } else {
-                echo "Product not found.";  // Nếu không tìm thấy sản phẩm
+                echo "Không tìm thấy sản phẩm.controllers";
             }
         } else {
-            $flashSaleProducts = Product::getAll('Flash Sale');  // Hiển thị sản phẩm flash sale nếu không có id
-            $this->render('product_detail', array("flashSaleProducts" => $flashSaleProducts));
+            echo "Thiếu ID sản phẩm.";
         }
     }
+    
     public function product_all(){
         $this->render('product_all');
     }

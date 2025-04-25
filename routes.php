@@ -7,7 +7,7 @@
         'contact' => ['index'],
         'cart' => ['index', 'add', 'remove'],
         'order' => ['index'],
-        'product' => ['index','product_all','search'],
+        'product' => ['index','product_all','search','detail'],
         'dashboard' => ['index','logout'],
         'managements' =>
             array(

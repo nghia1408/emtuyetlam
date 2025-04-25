@@ -1,5 +1,7 @@
 <?php
     class Product {
+        
+        
         public $id;
         public $name;
         public $desc;
@@ -66,32 +68,28 @@
          * @return mixed
          */
         public static function getProductById($id) {
-            try {
-                $db = DB::getInstance();
-                $stmt = $db->prepare("SELECT products.*, category.name AS category_name FROM products JOIN category ON products.category_id = category.id WHERE products.id = :id");
-                $stmt->bindParam(':id', $id);
-                $stmt->execute();
+            $db = DB::getInstance();
+            $stmt = $db->prepare("SELECT * FROM products WHERE id = :id");
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+        
+            if ($stmt->rowCount() > 0) {
                 $item = $stmt->fetch();
-
-                if ($item) {
-                    return new Product(
-                        $item['id'],
-                        $item['name'],
-                        $item['description'],
-                        $item['price'],
-                        $item['discount'],
-                        $item['quantity'],
-                        $item['category_id'],
-                        $item['image'],
-                        $item['category_name']
-                    );
-                } else {
-                    return null;
-                }
-            } catch (PDOException $ex) {
-                return "Error";
+                return [
+                    'id' => $item['id'],
+                    'name' => $item['name'],
+                    'description' => $item['description'],
+                    'price' => $item['price'],
+                    'discount' => $item['discount'],
+                    'quantity' => $item['quantity'],
+                    'category_id' => $item['category_id'],
+                    'img' => $item['image']
+                ];
             }
+        
+            return null;
         }
+        
 
         // Phương thức tìm kiếm sản phẩm
         public static function searchProducts($search_query) {
@@ -150,5 +148,5 @@
 }
 
 
-
+    
     }
