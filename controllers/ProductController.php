@@ -23,7 +23,7 @@ class ProductController extends BaseController{
             echo "Thiếu ID sản phẩm.";
         }
     }
-    
+    // xóa cái này
     public function product_all(){
         $this->render('product_all');
     }
