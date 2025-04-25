@@ -78,7 +78,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <?php
     foreach ($products as $product) {
         echo '<div class="product_card">';
-        echo '<a href="/emtuyetlam/index.php?controller=product&action=detail&id=' . urlencode($product['id']) . '">';
+        echo '<a href="?controller=product&action=detail&id=' . htmlspecialchars($product['id']) . '">';
         echo '<img class="product_img" src="' . htmlspecialchars($product['image']) . '" alt="' . htmlspecialchars($product['name']) . '">';
         echo '<h4>' . htmlspecialchars($product['name']) . '</h4>';
         echo '<p class="price">' . number_format($product['price']) . '<sup>đ</sup>';
@@ -95,40 +95,6 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     ?>
 </div>
 
-
-<style>
-    .pagination {
-    display: inline-block;
-    padding: 10px 20px;
-    border-radius: 8px;
-    background-color: #f7f7f7;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.pagination a {
-    color: #333;
-    float: left;
-    padding: 8px 14px;
-    margin: 0 5px;
-    text-decoration: none;
-    font-size: 14px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.pagination a:hover {
-    background-color: #007bff;
-    color: #fff;
-    border-color: #007bff;
-}
-
-.pagination a.active {
-    background-color: #007bff;
-    color: white;
-    border: 1px solid #007bff;
-}
-</style>
 <!--Phân Trang-->
 <div style="text-align: center; margin: 30px 0;">
     <?php if ($totalPages > 1): ?>

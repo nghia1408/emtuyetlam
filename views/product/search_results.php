@@ -6,7 +6,7 @@
     <div class="products">
         <?php foreach ($products as $product): ?>
             <div class="card">
-                <a href="?controller=product&action=index">
+                <a href="?controller=product&action=detail&id=<?= $product->id ?>">
                     <div class="card_top">
                         <img
                             src="<?= $product->img ?>"
