@@ -94,7 +94,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     ?>
 </div>
-
+<!-- sss -->
 <!--Phân Trang-->
 <div style="text-align: center; margin: 30px 0;">
     <?php if ($totalPages > 1): ?>
