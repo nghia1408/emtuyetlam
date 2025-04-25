@@ -157,47 +157,6 @@
     <section class="section">
         <div class="container">
             <div class="section_category">
-                <p class="section_category_p">categories</p>
-            </div>
-            <div class="section_header">
-                <h3 class="section_title">Browse by Category</h3>
-            </div>
-            <div class="categories">
-                <div class="category">
-                    <img src="./assets/image/icons/sofa.png" alt="" class="category_icon" />
-                    <p class="category_name">Sofa</p>
-                </div>
-                <div class="category">
-                    <img src="./assets/image/icons/door.png" alt="" class="category_icon" />
-                    <p class="category_name">Door</p>
-                </div>
-                <div class="category">
-                    <img src="./assets/image/icons/light.png" alt="" class="category_icon" />
-                    <p class="category_name">light</p>
-                </div>
-                <div class="category">
-                    <img
-                            src="./assets/image/icons/window.png"
-                            alt=""
-                            class="category_icon"
-                    />
-                    <p class="category_name">window</p>
-                </div>
-                <div class="category">
-                    <img src="./assets/image/icons/desk.png" alt="" class="category_icon" />
-                    <p class="category_name">Desk</p>
-                </div>
-                <div class="category">
-                    <img src="./assets/image/icons/chair.png" alt="" class="category_icon" />
-                    <p class="category_name">chair</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <div class="section_category">
                 <p class="section_category_p">This Month</p>
             </div>
             <div class="section_header">
