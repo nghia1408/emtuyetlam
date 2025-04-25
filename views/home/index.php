@@ -154,6 +154,16 @@
             </div>
         </div>
     </section>
+    
+
+    
+    <div class="container header_container">
+        <img src="./assets/image/bg7.webp" alt="" class="header_img" />
+    </div>
+
+
+
+
     <section class="section">
         <div class="container">
             <div class="section_category">
