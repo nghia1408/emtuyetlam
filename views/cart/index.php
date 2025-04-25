@@ -19,7 +19,6 @@
                 <p class="cart_header_image">Hình Ảnh</p>
                 <p class="cart_header_price">Giá</p>
                 <p class="cart_header_quantity">Số Lượng</p>
-                <p class="cart_header_colour">Màu Sắc</p>
                 <p class="cart_header_delete">Xóa</p>
             </div>
 
@@ -32,7 +31,6 @@
                         <img src="<?php echo htmlspecialchars($item['image']); ?>" alt="<?php echo htmlspecialchars($item['name']); ?>" class="cart_img" />
                         <p class="cart_price"><?php echo number_format($item['price'], 0, ',', '.') . ' VND'; ?></p>
                         <p class="cart_quantity"><?php echo $item['quantity']; ?></p>
-                        <p class="cart_colour"><?php echo htmlspecialchars($item['colour']); ?></p>
                         <a href="?controller=cart&action=remove&id=<?php echo urlencode($cart_key); ?>" class="cart_delete">Xóa</a>
                     </div>
                 <?php endforeach; ?>

@@ -26,12 +26,11 @@ class CartController extends BaseController {
             $product_price = $_POST['product_price'] ?? 0;
             $product_image = $_POST['product_image'] ?? '';
             $quantity = isset($_POST['quantity']) ? (int)$_POST['quantity'] : 1;
-            $colour = $_POST['colours'] ?? ''; // Lấy màu sắc
 
             // Kiểm tra dữ liệu đầu vào
             if ($product_id && $product_name && $product_price) {
-                // Tạo khóa duy nhất cho sản phẩm dựa trên ID, màu sắc và kích thước
-                $cart_key = $product_id . '_' . $colour . '_' . $size;
+                // Tạo khóa duy nhất cho sản phẩm dựa trên ID
+                $cart_key = $product_id . '_';
 
                 // Kiểm tra xem sản phẩm đã có trong giỏ hàng chưa
                 if (isset($_SESSION['cart'][$cart_key])) {
@@ -44,9 +43,7 @@ class CartController extends BaseController {
                         'name' => $product_name,
                         'price' => $product_price,
                         'image' => $product_image,
-                        'quantity' => $quantity,
-                        'colour' => $colour,
-                        'size' => $size
+                        'quantity' => $quantity
                     ];
                 }
                 
