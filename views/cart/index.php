@@ -24,18 +24,18 @@
 
             <!-- Hiển thị sản phẩm động -->
             <?php if (!empty($data['cart_items'])): ?>
-                <?php foreach ($data['cart_items'] as $cart_key => $item): ?>
+                <?php foreach ($data['cart_items'] as $item): ?>
                     <div class="cart-item">
                         <p class="cart_id"><?php echo htmlspecialchars($item['id']); ?></p>
                         <p class="cart_title"><?php echo htmlspecialchars($item['name']); ?></p>
                         <img src="<?php echo htmlspecialchars($item['image']); ?>" alt="<?php echo htmlspecialchars($item['name']); ?>" class="cart_img" />
                         <p class="cart_price"><?php echo number_format($item['price'], 0, ',', '.') . ' VND'; ?></p>
                         <p class="cart_quantity"><?php echo $item['quantity']; ?></p>
-                        <a href="?controller=cart&action=remove&id=<?php echo urlencode($cart_key); ?>" class="cart_delete">Xóa</a>
+                        <a href="?controller=cart&action=remove&id=<?php echo urlencode($item['id']); ?>" class="cart_delete">Xóa</a>
                     </div>
                 <?php endforeach; ?>
             <?php else: ?>
-                <p></p>
+                <p>Giỏ hàng của bạn đang trống. Hãy thêm sản phẩm vào giỏ hàng.</p>
             <?php endif; ?>
         </div>
 
@@ -45,6 +45,8 @@
         <?php endif; ?>
     </div>
 </section>
+
+
 
 
 <footer class="footer">

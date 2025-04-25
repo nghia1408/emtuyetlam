@@ -1,21 +1,27 @@
 <?php
 include_once('controllers/BaseController.php');
+include_once('models/Cart.php');
 
 class CartController extends BaseController {
     public function __construct() {
         $this->folder = 'cart';
-        // Khởi tạo session nếu chưa được bắt đầu
+
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
-        // Khởi tạo giỏ hàng nếu chưa tồn tại
+
+        $this->db = new PDO('mysql:host=localhost;dbname=dogiadung;charset=utf8', 'root', '');
+        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
         if (!isset($_SESSION['cart'])) {
             $_SESSION['cart'] = [];
         }
     }
 
     public function index() {
-        $data = ['cart_items' => $_SESSION['cart']];
+        $user_id = $_SESSION['user_id'] ?? 0;
+        $cart_items = Cart::getCartItems($this->db, $user_id);
+        $data = ['cart_items' => $cart_items];
         $this->render('index', $data);
     }
 
@@ -26,32 +32,13 @@ class CartController extends BaseController {
             $product_price = $_POST['product_price'] ?? 0;
             $product_image = $_POST['product_image'] ?? '';
             $quantity = isset($_POST['quantity']) ? (int)$_POST['quantity'] : 1;
+            $user_id = $_SESSION['user_id'] ?? 0;
 
-            // Kiểm tra dữ liệu đầu vào
-            if ($product_id && $product_name && $product_price) {
-                // Tạo khóa duy nhất cho sản phẩm dựa trên ID
-                $cart_key = $product_id . '_';
-
-                // Kiểm tra xem sản phẩm đã có trong giỏ hàng chưa
-                if (isset($_SESSION['cart'][$cart_key])) {
-                    // Cập nhật số lượng
-                    $_SESSION['cart'][$cart_key]['quantity'] += $quantity;
-                } else {
-                    // Thêm sản phẩm mới vào giỏ hàng
-                    $_SESSION['cart'][$cart_key] = [
-                        'id' => $product_id,
-                        'name' => $product_name,
-                        'price' => $product_price,
-                        'image' => $product_image,
-                        'quantity' => $quantity
-                    ];
-                }
-                
-                // Chuyển hướng về trang giỏ hàng
+            if ($product_id && $product_name && $product_price && $user_id) {
+                Cart::addToCart($this->db, $user_id, $product_id, $product_name, $product_price, $product_image, $quantity);
                 header("Location: ?controller=cart&action=index");
                 exit;
             } else {
-                // Chuyển hướng với thông báo lỗi
                 $_SESSION['error'] = "Lỗi khi thêm sản phẩm vào giỏ hàng!";
                 header("Location: ?controller=cart&action=index");
                 exit;
@@ -61,12 +48,13 @@ class CartController extends BaseController {
 
     public function remove() {
         if (isset($_GET['id'])) {
-            $cart_key = $_GET['id'];
-            if (isset($_SESSION['cart'][$cart_key])) {
-                unset($_SESSION['cart'][$cart_key]);
-                $_SESSION['message'] = "Sản phẩm đã được xóa khỏi giỏ hàng!";
-            }
+            $cart_id = $_GET['id'];
+            $user_id = $_SESSION['user_id'] ?? 0;
+
+            Cart::removeFromCart($this->db, $user_id, $cart_id);
+            $_SESSION['message'] = "Sản phẩm đã được xóa khỏi giỏ hàng!";
         }
+
         header("Location: ?controller=cart&action=index");
         exit;
     }

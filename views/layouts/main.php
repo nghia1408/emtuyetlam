@@ -52,9 +52,11 @@
                 </button>
             </form>
             <img src="./assets/image/heart.png" alt="" class="nav_heart" />
-            <a href="?controller=cart&action=index">
+            <?php if (isUserLoggedIn()): ?>
+                <a href="?controller=cart&action=index">
                 <img src="./assets/image/cart.png" alt="" class="nav_cart" />
-            </a>
+                </a>
+            <?php endif; ?>
             <?php
             // Giả sử hàm isUserLoggedIn() sẽ kiểm tra xem người dùng đã đăng nhập chưa
             if (isUserLoggedIn()) {

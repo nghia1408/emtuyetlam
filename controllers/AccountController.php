@@ -11,47 +11,50 @@
 
 
         public function login()
-        {
-            if (isUserLoggedIn()) {
-                // Nếu đã đăng nhập, chuyển hướng về trang chủ
-                $user = getUserLoggedIn();
+{
+    if (isUserLoggedIn()) {
+        // Nếu đã đăng nhập, chuyển hướng về trang chủ
+        $user = getUserLoggedIn();
 
-                if ($user && $user->role_id == 2) {
-                    redirect("?controller=dashboard&action=index");
-                } else {
-                    redirect("?controller=home&action=index");
-                }
-                return;
-            }
-
-            if (isset($_POST['btn_submit'])) {
-                $username = $_POST['tk'];
-                $password = $_POST['mk'];
-
-                if (empty($username) || empty($password)) {
-                    $message = "Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu";
-                    $this->render('login', array("message" => $message));
-                    return;
-                }
-                // Kiểm tra tên đăng nhập và mật khẩu
-                $user = User::login($username, $password);
-                if ($user) {
-                    setUserLogin(serialize($user));
-                
-                    // Kiểm tra role_id
-                    if ($user->role_id == 2) {
-                        redirect("?controller=dashboard&action=index");
-                    } else {
-                        redirect("?controller=home&action=index");
-                    }
-                } else {
-                    $message = "Sai tên đăng nhập hoặc mật khẩu";
-                    $this->render('login', array("message" => $message));
-                }
-            } else {
-                $this->render('login');
-            }
+        if ($user && $user->role_id == 2) {
+            redirect("?controller=dashboard&action=index");
+        } else {
+            redirect("?controller=home&action=index");
         }
+        return;
+    }
+
+    if (isset($_POST['btn_submit'])) {
+        $username = $_POST['tk'];
+        $password = $_POST['mk'];
+
+        if (empty($username) || empty($password)) {
+            $message = "Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu";
+            $this->render('login', array("message" => $message));
+            return;
+        }
+        // Kiểm tra tên đăng nhập và mật khẩu
+        $user = User::login($username, $password);
+        if ($user) {
+            // Lưu thông tin user vào session
+            $_SESSION['user_id'] = $user->id; // Lưu user_id vào session
+            setUserLogin(serialize($user));
+        
+            // Kiểm tra role_id
+            if ($user->role_id == 2) {
+                redirect("?controller=dashboard&action=index");
+            } else {
+                redirect("?controller=home&action=index");
+            }
+        } else {
+            $message = "Sai tên đăng nhập hoặc mật khẩu";
+            $this->render('login', array("message" => $message));
+        }
+    } else {
+        $this->render('login');
+    }
+}
+
 
         public function logout() {
             setUserLogout();
