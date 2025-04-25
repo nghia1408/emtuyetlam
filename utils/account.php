@@ -8,6 +8,8 @@
     function setUserLogout(){
         if(isset($_SESSION['user'])) {
             unset($_SESSION['user']);
+            // Xóa giỏ hàng khi người dùng đăng xuất
+            unset($_SESSION['cart']);
             return true;
         }
         return false;

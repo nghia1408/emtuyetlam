@@ -47,8 +47,7 @@ class CartController extends BaseController {
                     ];
                 }
                 
-                // Chuyển hướng về trang giỏ hàng với thông báo thành công
-                $_SESSION['message'] = "Sản phẩm đã được thêm vào giỏ hàng!";
+                // Chuyển hướng về trang giỏ hàng
                 header("Location: ?controller=cart&action=index");
                 exit;
             } else {

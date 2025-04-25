@@ -35,7 +35,7 @@
                     </div>
                 <?php endforeach; ?>
             <?php else: ?>
-                <p>Giỏ hàng của bạn đang trống!</p>
+                <p></p>
             <?php endif; ?>
         </div>
 

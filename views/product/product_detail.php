@@ -39,7 +39,13 @@
                         style="width: 60px;"
                     />
 
-                    <button type="submit" class="btn-buy">Thêm vào giỏ hàng</button>
+                    <?php if (isUserLoggedIn()): ?>
+                <button type="submit" class="btn-buy">Thêm vào giỏ hàng</button>
+                <?php else: ?>
+                    <a href="?controller=account&action=login" class="btn-buy" style="text-decoration: none; display: inline-block; text-align: center;">
+                        Thêm vào giỏ hàng
+                    </a>
+                <?php endif; ?>
                 </form>
             </div>
 
