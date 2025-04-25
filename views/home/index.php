@@ -25,7 +25,7 @@
 
 
                         <div class="card">
-                            <a href="?controller=product&action=index&id=<?= $item->id ?>">
+                            <a href="?controller=product&action=detail&id=<?= $item->id ?>">
                                 <div class="card_top">
                                     <img
                                             src="<?= $item->img ?>"
@@ -215,7 +215,7 @@
 
 
                     <div class="card">
-                        <a href="?controller=product&action=index&id=<?= $item->id ?>">
+                        <a href="?controller=product&action=detail&id=<?= $item->id ?>">
                             <div class="card_top">
                                 <img
                                         src="<?= $item->img ?>"
@@ -376,7 +376,7 @@
 
 
                     <div class="card">
-                        <a href="?controller=product&action=index&id=<?= $item->id ?>">
+                        <a href="?controller=product&action=detail&id=<?= $item->id ?>">
                             <div class="card_top">
                                 <img
                                         src="<?= $item->img ?>"
