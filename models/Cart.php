@@ -18,7 +18,8 @@ class Cart {
     }
 
     // Lấy giỏ hàng của người dùng
-    public static function getCartItems($db, $user_id) {
+    public static function getCartItems($user_id) {
+        $db = DB::getInstance();
         $stmt = $db->prepare("SELECT c.id, p.name AS name, p.price AS price, p.image AS image, c.quantity
                       FROM cart c
                       JOIN products p ON c.product_id = p.id
@@ -29,7 +30,8 @@ class Cart {
     }
 
     // Thêm sản phẩm vào giỏ hàng
-    public static function addToCart($db, $user_id, $product_id, $product_name, $product_price, $product_image, $quantity) {
+    public static function addToCart($user_id, $product_id, $product_name, $product_price, $product_image, $quantity) {
+        $db = DB::getInstance();
         // Kiểm tra nếu sản phẩm đã có trong giỏ hàng của người dùng
         $stmt = $db->prepare("SELECT * FROM cart WHERE user_id = ? AND product_id = ?");
         $stmt->execute([$user_id, $product_id]);
@@ -49,7 +51,8 @@ class Cart {
     }
 
     // Xóa sản phẩm khỏi giỏ hàng
-    public static function removeFromCart($db, $user_id, $cart_id) {
+    public static function removeFromCart($user_id, $cart_id) {
+        $db = DB::getInstance();
         $stmt = $db->prepare("DELETE FROM cart WHERE id = ? AND user_id = ?");
         $stmt->execute([$cart_id, $user_id]);
     }

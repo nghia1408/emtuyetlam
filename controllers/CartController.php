@@ -20,7 +20,7 @@ class CartController extends BaseController {
 
     public function index() {
         $user_id = $_SESSION['user_id'] ?? 0;
-        $cart_items = Cart::getCartItems($this->db, $user_id);
+        $cart_items = Cart::getCartItems($user_id);
         $data = ['cart_items' => $cart_items];
         $this->render('index', $data);
     }
@@ -35,7 +35,7 @@ class CartController extends BaseController {
             $user_id = $_SESSION['user_id'] ?? 0;
 
             if ($product_id && $product_name && $product_price && $user_id) {
-                Cart::addToCart($this->db, $user_id, $product_id, $product_name, $product_price, $product_image, $quantity);
+                Cart::addToCart($user_id, $product_id, $product_name, $product_price, $product_image, $quantity);
                 header("Location: ?controller=cart&action=index");
                 exit;
             } else {
@@ -51,7 +51,7 @@ class CartController extends BaseController {
             $cart_id = $_GET['id'];
             $user_id = $_SESSION['user_id'] ?? 0;
 
-            Cart::removeFromCart($this->db, $user_id, $cart_id);
+            Cart::removeFromCart($user_id, $cart_id);
             $_SESSION['message'] = "Sản phẩm đã được xóa khỏi giỏ hàng!";
         }
 

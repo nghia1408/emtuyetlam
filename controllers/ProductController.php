@@ -7,7 +7,7 @@ class ProductController extends BaseController{
         $this->folder = 'product';
     }
     public function index() {
-        $this->render('product_all');  // chỉ render product_all thôi
+        $this->render('product_all');
     }
     public function detail() {
         if (isset($_GET['id'])) {

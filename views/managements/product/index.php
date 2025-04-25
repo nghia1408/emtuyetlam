@@ -187,9 +187,12 @@
             <div class="product-cell price">
                 <a href="?controller=add_productManage&action=index"><button class="action-button add">+</button></a>
                 <button class="action-button edit">✏️</button>
-                <form action="?controller=ProductManage&action=deleteProduct" method="POST" style="display:inline;">
-    <button type="submit" class="action-button delete">🗑️</button>
-</form>
+                <!-- Sửa phần form xóa sản phẩm -->
+    <form action="?controller=productManage&action=deleteProduct" method="POST" style="display:inline;">
+        <!-- Thêm trường hidden để gửi id sản phẩm -->
+        <input type="hidden" name="id" value="<?= $product->id; ?>">
+        <button type="submit" class="action-button delete">🗑️</button>
+    </form>
 
             </div>
         </div>

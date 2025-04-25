@@ -27,6 +27,7 @@ class ProductManageController extends BaseController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
             $productId = $_POST['id'];  // Dùng POST thay vì GET để nhận ID
+            echo $productId;
 
             // Gọi hàm xóa trong Model
             $result = Product::deleteProductById($productId);
