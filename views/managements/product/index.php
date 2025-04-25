@@ -187,7 +187,10 @@
             <div class="product-cell price">
                 <a href="?controller=add_productManage&action=index"><button class="action-button add">+</button></a>
                 <button class="action-button edit">✏️</button>
-                <button class="action-button delete">🗑️</button>
+                <form action="?controller=ProductManage&action=deleteProduct" method="POST" style="display:inline;">
+    <button type="submit" class="action-button delete">🗑️</button>
+</form>
+
             </div>
         </div>
         <?php endforeach; ?>

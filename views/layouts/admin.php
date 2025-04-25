@@ -65,7 +65,7 @@
                     <span>Product-list</span>
                 </a>
             </li>
-            <li class="sidebar-list-item active">
+            <li class="sidebar-list-item ">
                 <a href="?controller=userManage&action=index">
                     <svg
                             xmlns="http://www.w3.org/2000/svg"

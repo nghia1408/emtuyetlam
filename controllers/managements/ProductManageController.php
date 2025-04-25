@@ -22,4 +22,24 @@ class ProductManageController extends BaseController
         // Truyền dữ liệu vào view
         $this->render('index', ['products' => $products], 'admin');
     }
+
+    public function deleteProduct(): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
+            $productId = $_POST['id'];  // Dùng POST thay vì GET để nhận ID
+
+            // Gọi hàm xóa trong Model
+            $result = Product::deleteProductById($productId);
+
+            if ($result) {
+                redirect('?controller=productManage&action=index');
+            } else {
+                echo "Xóa sản phẩm thất bại.";
+            }
+        } else {
+            echo "Không tìm thấy ID sản phẩm cần xóa.";
+        }
+    }
+
+
 }

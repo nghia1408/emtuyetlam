@@ -147,6 +147,16 @@
     }
 }
 
+public static function deleteProductById($id): bool
+{
+    $db = Database::getInstance();
+    $conn = $db->getConnection();
+
+    $stmt = $conn->prepare("DELETE FROM products WHERE id = ?");
+    return $stmt->execute([$id]);
+}
+
+
 
     
-    }
+}
