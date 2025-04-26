@@ -1,3 +1,4 @@
+<!-- index -->
 <?php
 require_once('connection.php');
 require_once('utils/redirect.php');
