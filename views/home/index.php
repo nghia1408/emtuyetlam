@@ -331,7 +331,7 @@
                     </div>
 
                     <?php
-                    $count++; // Tăng biến đếm sau mỗi sản phẩm
+                    $count++; 
                 }
                 ?>
 
