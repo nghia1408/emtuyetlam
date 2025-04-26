@@ -149,10 +149,9 @@
 
 public static function deleteProductById($id): bool
 {
-    $db = Database::getInstance();
-    $conn = $db->getConnection();
+    $db = DB::getInstance();
 
-    $stmt = $conn->prepare("DELETE FROM products WHERE id = ?");
+    $stmt = $db->prepare("DELETE FROM products WHERE id = ?");
     return $stmt->execute([$id]);
 }
 

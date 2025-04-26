@@ -11,7 +11,7 @@
         'dashboard' => ['index','logout'],
         'managements' =>
             array(
-                'productManage' => ['index'],
+                'productManage' => ['index', 'deleteProduct'],
                 'userManage' => ['index', 'deleteUser'],
                 'orderManage' => ['index'],
                 'add_productManage' => ['index'],
