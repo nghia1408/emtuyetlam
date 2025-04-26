@@ -2,7 +2,7 @@
     <div class="ep-sidebar">
         <h3>Tài khoản của tôi</h3>
         <ul>
-            <li class="ep-active"><a href="./account.html">Hồ sơ</a></li>
+            <li class="ep-active"><a href="?controller=home&action=user">Hồ sơ</a></li>
             <li ><a href="?controller=account&action=changePassword">Đổi mật khẩu</a></li>
         </ul>
     </div>

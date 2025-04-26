@@ -3,7 +3,7 @@
         <h3>Tài khoản của tôi</h3>
         <ul>
             <li ><a href="?controller=home&action=user">Hồ sơ</a></li>
-            <li class="ep-active"><a href="?controller=home&action=changePassword">Đổi mật khẩu</a></li>
+            <li class="ep-active"><a href="?controller=account&action=changePassword">Đổi mật khẩu</a></li>
         </ul>
     </div>
 
