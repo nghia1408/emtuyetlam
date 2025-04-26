@@ -1,8 +1,30 @@
-<header class="header">
-    <div class="container header_container">
-        <img src="./assets/image/header.webp" alt="" class="header_img" />
+<!-- img-slider -->
+    
+<div class="slideshow-container">
+        <!-- Các slide ảnh -->
+        <div class="slide fade">
+            <img src="./assets/image/bg1.png" alt="Slide 1">
+        </div>
+        <div class="slide fade">
+            <img src="./assets/image/bg3.png" alt="Slide 2">
+            
+        </div>
+        <div class="slide fade">
+            <img src="./assets/image/bg2.png" alt="Slide 3">
+        </div>
+        
+        <!-- Nút điều hướng -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        
+        <!-- Chấm chỉ số slide -->
+        <div class="dots-container">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
     </div>
-</header>
+    <!-- end imgslider -->
 
 <div class="">
     <section class="section">
