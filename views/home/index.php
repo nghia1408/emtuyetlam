@@ -40,8 +40,10 @@
             <div class="products">
 
                 <?php
+                 $count = 0; // Đếm số sản phẩm đã hiển thị
                     foreach ($flashSaleProducts as $item) {
                         // logic
+                        if ($count >= 8) break;
                         $discount_price = $item->price - ($item->price * $item->discount / 100);
                         ?>
 
@@ -167,6 +169,7 @@
                         </div>
 
                         <?php
+                        $count++; // Tăng biến đếm sau mỗi sản phẩm
                     }
                 ?>
 
@@ -199,8 +202,10 @@
             <div class="products">
 
                 <?php
+                 $count = 0; // Đếm số sản phẩm đã hiển thị
                 foreach ($bestSellingProducts as $item) {
                     // logic
+                    if ($count >= 8) break;
                     $discount_price = $item->price - ($item->price * $item->discount / 100);
                     ?>
 
@@ -326,6 +331,7 @@
                     </div>
 
                     <?php
+                    $count++; 
                 }
                 ?>
 
@@ -341,7 +347,7 @@
                 <div class="trending_content">
                     <p class="trending_p">categories</p>
                     <h2 class="trending_title">SOFA đẹp giành cho bạn</h2>
-                    <a href="#" class="trending_btn">Buy Now!</a>
+                    <a href="?controller=product&action=product_all" class="trending_btn">Buy Now!</a>
                 </div>
                 <img src="./assets/image/sofa.png" alt="" class="sofa" />
             </div>
@@ -360,7 +366,9 @@
             <div class="products">
 
                 <?php
+                 $count = 0; // Đếm số sản phẩm đã hiển thị
                 foreach ($ourProducts as $item) {
+                    if ($count >= 8) break;
                     // logic
                     $discount_price = $item->price - ($item->price * $item->discount / 100);
                     ?>
@@ -487,6 +495,7 @@
                     </div>
 
                     <?php
+                    $count++; // Tăng biến đếm sau mỗi sản phẩm
                 }
                 ?>
 
