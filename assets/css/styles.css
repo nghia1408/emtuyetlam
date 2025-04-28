@@ -1813,3 +1813,10 @@ button {
   color: white;
   border: 1px solid #007bff;
 }
+
+/* Optional: Style khi icon được chọn */
+.category.active {
+  border: 2px solid #000;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+}

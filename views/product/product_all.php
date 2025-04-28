@@ -1,3 +1,13 @@
+
+<style>
+/* Style cho icon được chọn */
+.category.active {
+    border: 2px solid #000;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+}
+</style>
+
 <?php
 // include_once("connection.php");
 $db = DB::getInstance();
@@ -42,31 +52,32 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <h3 class="section_title">Browse by Category</h3>
         </div>
         <div class="categories">
-            <div class="category">
-                <img src="./assets/image/icons/sofa.png" alt="" class="category_icon" />
-                <p class="category_name">Sofa</p>
-            </div>
-            <div class="category">
-                <img src="./assets/image/icons/door.png" alt="" class="category_icon" />
-                <p class="category_name">Door</p>
-            </div>
-            <div class="category">
-                <img src="./assets/image/icons/light.png" alt="" class="category_icon" />
-                <p class="category_name">light</p>
-            </div>
-            <div class="category">
-                <img src="./assets/image/icons/window.png" alt="" class="category_icon" />
-                <p class="category_name">window</p>
-            </div>
-            <div class="category">
-                <img src="./assets/image/icons/desk.png" alt="" class="category_icon" />
-                <p class="category_name">Desk</p>
-            </div>
-            <div class="category">
-                <img src="./assets/image/icons/chair.png" alt="" class="category_icon" />
-                <p class="category_name">chair</p>
-            </div>
-        </div>
+    <div class="category" data-name="Sofa">
+        <img src="./assets/image/icons/sofa.png" alt="" class="category_icon" />
+        <p class="category_name">Sofa</p>
+    </div>
+    <div class="category" data-name="Giường">
+        <img src="./assets/image/icons/door.png" alt="" class="category_icon" />
+        <p class="category_name">Giường</p>
+    </div>
+    <div class="category" data-name="Đèn">
+        <img src="./assets/image/icons/light.png" alt="" class="category_icon" />
+        <p class="category_name">Đèn</p>
+    </div>
+    <div class="category" data-name="Nệm">
+        <img src="./assets/image/icons/window.png" alt="" class="category_icon" />
+        <p class="category_name">Nệm</p>
+    </div>
+    <div class="category" data-name="Ghế">
+        <img src="./assets/image/icons/desk.png" alt="" class="category_icon" />
+        <p class="category_name">Ghế</p>
+    </div>
+    <div class="category" data-name="Bàn">
+        <img src="./assets/image/icons/chair.png" alt="" class="category_icon" />
+        <p class="category_name">Bàn</p>
+    </div>
+</div>
+
     </div>
 </section>
 
@@ -135,7 +146,25 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 </section>
 
+<script>
+        document.querySelectorAll('.category').forEach(category => {
+  category.addEventListener('click', () => {
+      const selectedName = category.getAttribute('data-name').toLowerCase();
+      document.querySelectorAll('.product_card').forEach(product => {
+          const productName = product.querySelector('h4').textContent.toLowerCase();
+          if (productName.includes(selectedName)) {
+              product.style.display = "block";
+          } else {
+              product.style.display = "none";
+          }
+      });
 
+      // Highlight icon được chọn
+      document.querySelectorAll('.category').forEach(c => c.classList.remove('active'));
+      category.classList.add('active');
+  });
+});
+</script>
 
 
 <footer class="footer">
@@ -180,4 +209,5 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <p class="footer_copy">Copyright Casafine 2025. All right reserved</p>
         </div>
     </div>
+    
 </footer>
