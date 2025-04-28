@@ -1,16 +1,6 @@
 <section class="section">
     <div class="container">
-        <!-- Hiển thị thông báo -->
-        <?php if (isset($_SESSION['message'])): ?>
-            <div class="alert alert-success">
-                <?php echo $_SESSION['message']; unset($_SESSION['message']); ?>
-            </div>
-        <?php endif; ?>
-        <?php if (isset($_SESSION['error'])): ?>
-            <div class="alert alert-danger">
-                <?php echo $_SESSION['error']; unset($_SESSION['error']); ?>
-            </div>
-        <?php endif; ?>
+        
 
         <div class="cart">
             <div class="cart_header">
@@ -35,7 +25,7 @@
                     </div>
                 <?php endforeach; ?>
             <?php else: ?>
-                <p>Giỏ hàng của bạn đang trống. Hãy thêm sản phẩm vào giỏ hàng.</p>
+                <p>Giỏ hàng của bạn đang trống.</p>
             <?php endif; ?>
         </div>
 

@@ -5,17 +5,7 @@ include_once('models/Cart.php');
 class CartController extends BaseController {
     public function __construct() {
         $this->folder = 'cart';
-
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
-
-        $this->db = new PDO('mysql:host=localhost;dbname=dogiadung;charset=utf8', 'root', '');
-        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        if (!isset($_SESSION['cart'])) {
-            $_SESSION['cart'] = [];
-        }
+        
     }
 
     public function index() {
