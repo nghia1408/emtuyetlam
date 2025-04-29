@@ -1,6 +1,6 @@
 <?php
     $controllers = array(
-        'account' => ['login', 'register', 'logout', 'changePassword'],
+        'account' => ['login', 'register', 'logout', 'changePassword', 'updateProfile'],
         'home' => ['index', 'error','user'],
         'payment' => ['thanhtoan'],
         'about' => ['index'],

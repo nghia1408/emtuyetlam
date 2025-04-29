@@ -11,8 +11,9 @@
         public $password;
 
         public $role_id;
+        public $gender;
 
-        function __construct($id, $name, $email, $phone, $address, $username, $password, $role_id) {
+        function __construct($id, $name, $email, $phone, $address, $username, $password, $gender, $role_id) {
             $this->id = $id;
             $this->name = $name;
             $this->email = $email;
@@ -21,6 +22,7 @@
             $this->username = $username;
             $this->password = $password;
             $this->role_id = $role_id;
+            $this->gender = $gender;
         }
 
 
@@ -31,7 +33,7 @@
             $stmt->execute([$username, $password]);
             $user = $stmt->fetch();
             if($user) {
-                return new User($user['id'], $user['name'], $user['email'], $user['phone'], $user['address'], $user['username'], $user['password'], $user['role_id']);
+                return new User($user['id'], $user['name'], $user['email'], $user['phone'], $user['address'], $user['gender'], $user['username'], $user['password'],$user['gender'], $user['role_id']);
             }else {
                 return null;
             }
@@ -105,6 +107,19 @@
             return false; // Trả về false nếu có lỗi
         }
     }
+
+    public static function updateProfile($userId, $name, $email, $phone, $gender) {
+        try {
+            $db = DB::getInstance();
+            $stmt = $db->prepare("UPDATE user SET name = ?, email = ?, phone = ?, gender = ? WHERE id = ?");
+            $stmt->execute([$name, $email, $phone, $gender, $userId]);
+            return true;
+        } catch (PDOException $ex) {
+            return false;
+        }
     }
+    
+    
+}
 
 

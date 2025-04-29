@@ -121,4 +121,60 @@
             }
         }
 
+        public function updateProfile() {
+            if (!isUserLoggedIn()) {
+                redirect("?controller=account&action=login");
+            }
+        
+            $user = getUserLoggedIn();
+        
+            if ($_SERVER["REQUEST_METHOD"] === "POST") {
+                $name = $_POST['name'] ?? '';
+                $email = $_POST['email'] ?? '';
+                $phone = $_POST['phone'] ?? '';
+                $gender = $_POST['gender'] ?? '';
+        
+                if (empty($name) || empty($email) || empty($phone)) {
+                    $this->render('editProfile', [
+                        "message" => "Vui lòng nhập đầy đủ thông tin",
+                        "user" => $user
+                    ]);
+                    return;
+                }
+        
+                $updateStatus = User::updateProfile($user->id, $name, $email, $phone, $gender);
+        
+                if ($updateStatus) {
+                    // Cập nhật session user
+                    $user->name = $name;
+                    $user->email = $email;
+                    $user->phone = $phone;
+                    $user->gender = $gender;
+                    setUserLogin(serialize($user));
+        
+                    // sau khi cập nhật đưa tới trang 
+                    header("Location: index.php?controller=home&action=user");
+                    exit;
+                } else {
+                    $this->render('editProfile', [
+                        "message" => "Đã xảy ra lỗi khi cập nhật thông tin",
+                        "user" => $user
+                    ]);
+                    return;
+                }
+            }
+        
+            // GET: hiển thị form với thông báo thành công nếu có
+            $message = "";
+            if (isset($_GET['success']) && $_GET['success'] == 1) {
+                $message = "Cập nhật thông tin thành công";
+            }
+        
+            $this->render('editProfile', [
+                "message" => $message,
+                "user" => $user
+            ]);
+        }
+        
+        
     }

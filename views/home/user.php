@@ -13,50 +13,49 @@
         </div>
         <div class="ep-card">
             <h2 style="margin-bottom:50px">Hồ sơ của tôi</h2>
-            <form method="post">
+            <form method="post" action="?controller=account&action=updateProfile">
                 <div class="ep-form-row">
                     <div class="ep-form-group">
                         <label>Tên đăng nhập</label>
-                        <input type="text" value="<?= $user->username ?>">
+                        <input type="text" name="username" value="<?= $user->username ?>">
                     </div>
                 </div>
                 <div>
                     <div class="ep-form-row">
                         <div class="ep-form-group">
                             <label>Tên</label>
-                            <input type="text" value="<?= $user->name ?>">
+                            <input type="text" name="name" value="<?= $user->name ?>">
                         </div>
                     </div>
                 </div>
                 <div class="ep-form-row">
                     <div class="ep-form-group">
                         <label>Email</label>
-                        <input type="email" value="<?= $user->email ?>">
+                        <input type="email" name="email" value="<?= $user->email ?>">
                     </div>
                 </div>
                 <div>
                     <div class="ep-form-row">
                         <div class="ep-form-group">
                             <label>Số điện thoại</label>
-                            <input type="text" value="<?= $user->phone ?>">
+                            <input type="text" name="phone" value="<?= $user->phone ?>">
                         </div>
                     </div>
                 </div>
 
                 <div class="ep-form-row">
                     <div class="ep-form-group">
-                        <label>Giới tính</label>
-                        <div class="ep-gender-options">
-                            <label><input type="radio" name="gender" value="male" checked><span>Nam</span></label>
-                            <label><input type="radio" name="gender" value="female"><span>Nữ</span></label>
-                            <label><input type="radio" name="gender" value="other"><span>Khác</span></label>
-                        </div>
+                    <label for="gender">Giới tính:</label>
+                        <select name="gender">
+                        <option value="Male" <?= $user->gender === 'Male' ? 'selected' : '' ?>>Nam</option>
+                        <option value="Female" <?= $user->gender === 'Female' ? 'selected' : '' ?>>Nữ</option>
+                        </select>
                     </div>
                 </div>
                 <div class="ep-form-actions">
-                    <button type="submit" class="ep-save">Lưu</button>
+                    <button type="submit" name="btn_submit"  class="ep-save">Lưu</button>
                 </div>
-
+                
             </form>
         </div>
     </div>
