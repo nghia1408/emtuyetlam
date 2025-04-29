@@ -12,7 +12,7 @@
 // include_once("connection.php");
 $db = DB::getInstance();
 
-// Xử lý danh mục từ POST
+// Xử lý biểu mẫu POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['category'])) {
     $category = trim($_POST['category']);
     if ($category === '') {
@@ -20,13 +20,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['category'])) {
     } else {
         $_SESSION['selected_category'] = $category; // Lưu danh mục vào session
     }
-    // Đặt lại về trang 1 khi thay đổi danh mục
-    $page = 1;
-} else {
-    // Lấy trang hiện tại từ GET, mặc định là 1
-    $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-    if ($page < 1) $page = 1;
+    // Chuyển hướng để tránh gửi lại biểu mẫu
+    header("Location: ?controller=product&action=index");
+    exit;
 }
+
+// Lấy trang hiện tại
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+if ($page < 1) $page = 1;
 
 // Số sản phẩm mỗi trang
 $limit = 10;
@@ -34,7 +35,7 @@ $limit = 10;
 // Tính offset
 $offset = ($page - 1) * $limit;
 
-// Lấy danh mục từ session (nếu có)
+// Lấy danh mục từ session
 $category = isset($_SESSION['selected_category']) ? $_SESSION['selected_category'] : '';
 
 // Xây dựng truy vấn đếm tổng số sản phẩm
@@ -69,7 +70,6 @@ $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
 $stmt->execute();
 $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
-
 
 
 

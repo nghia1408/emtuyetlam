@@ -175,7 +175,7 @@
 
             </div>
             <div class="container_btn">
-                <a href="?controller=product&action=product_all" class="container_btn_a">VIEW ALL PRODUCTS</a>
+                <a href="?controller=product&action=index" class="container_btn_a">VIEW ALL PRODUCTS</a>
             </div>
         </div>
     </section>
@@ -337,7 +337,7 @@
 
             </div>
             <div class="container_btn">
-                <a href="?controller=product&action=product_all" class="container_btn_a">VIEW ALL PRODUCTS</a>
+                <a href="?controller=product&action=index" class="container_btn_a">VIEW ALL PRODUCTS</a>
             </div>
         </div>
     </section>
@@ -501,7 +501,7 @@
 
             </div>
             <div class="container_btn">
-                <a href="?controller=product&action=product_all" class="container_btn_a">VIEW ALL PRODUCTS</a>
+                <a href="?controller=product&action=index" class="container_btn_a">VIEW ALL PRODUCTS</a>
             </div>
         </div>
     </section>

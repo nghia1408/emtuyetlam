@@ -23,10 +23,6 @@ class ProductController extends BaseController{
             echo "Thiếu ID sản phẩm.";
         }
     }
-    // xóa cái này
-    public function product_all(){
-        $this->render('product_all');
-    }
 
     public function search() {
         // Kiểm tra nếu có từ khóa tìm kiếm và người dùng đã nhấn nút tìm kiếm

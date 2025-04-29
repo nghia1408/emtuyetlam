@@ -3,10 +3,10 @@ document.querySelectorAll(".category").forEach((category) => {
       e.preventDefault(); // Ngăn hành vi mặc định của button
       const selectedName = category.getAttribute("data-name");
 
-      // Cập nhật trường ẩn với danh mục được chọn
+      // Cập nhật trường ẩn
       document.getElementById("categoryInput").value = selectedName;
 
-      // Highlight danh mục được chọn
+      // Highlight danh mục
       document.querySelectorAll(".category").forEach((c) => c.classList.remove("active"));
       category.classList.add("active");
 
