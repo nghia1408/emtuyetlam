@@ -477,6 +477,8 @@ ul {
   border: 1px solid var(--colo-white-2);
   transition: all 0.3s ease;
   cursor: pointer;
+  text-decoration: none;
+  color: #000;
 }
 .category:hover {
   background-color: var(--colo-primary);

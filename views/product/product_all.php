@@ -12,28 +12,58 @@
 // include_once("connection.php");
 $db = DB::getInstance();
 
+// Xử lý danh mục từ POST
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['category'])) {
+    $category = trim($_POST['category']);
+    if ($category === '') {
+        unset($_SESSION['selected_category']); // Xóa danh mục nếu chọn "Tất cả"
+    } else {
+        $_SESSION['selected_category'] = $category; // Lưu danh mục vào session
+    }
+    // Đặt lại về trang 1 khi thay đổi danh mục
+    $page = 1;
+} else {
+    // Lấy trang hiện tại từ GET, mặc định là 1
+    $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+    if ($page < 1) $page = 1;
+}
+
 // Số sản phẩm mỗi trang
 $limit = 10;
-
-// Trang hiện tại (nếu không có thì mặc định là 1)
-$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-if ($page < 1) $page = 1;
 
 // Tính offset
 $offset = ($page - 1) * $limit;
 
-// Lấy tổng số sản phẩm
+// Lấy danh mục từ session (nếu có)
+$category = isset($_SESSION['selected_category']) ? $_SESSION['selected_category'] : '';
+
+// Xây dựng truy vấn đếm tổng số sản phẩm
 $totalQuery = "SELECT COUNT(*) FROM products";
+if (!empty($category)) {
+    $totalQuery .= " WHERE LOWER(name) LIKE :category";
+}
+
 $totalStmt = $db->prepare($totalQuery);
+if (!empty($category)) {
+    $totalStmt->bindValue(':category', '%' . strtolower($category) . '%', PDO::PARAM_STR);
+}
 $totalStmt->execute();
 $totalProducts = $totalStmt->fetchColumn();
 
 // Tính tổng số trang
 $totalPages = ceil($totalProducts / $limit);
 
-// Truy vấn sản phẩm theo phân trang
-$query = "SELECT * FROM products LIMIT :limit OFFSET :offset";
+// Xây dựng truy vấn lấy sản phẩm
+$query = "SELECT * FROM products";
+if (!empty($category)) {
+    $query .= " WHERE LOWER(name) LIKE :category";
+}
+$query .= " LIMIT :limit OFFSET :offset";
+
 $stmt = $db->prepare($query);
+if (!empty($category)) {
+    $stmt->bindValue(':category', '%' . strtolower($category) . '%', PDO::PARAM_STR);
+}
 $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
 $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
 $stmt->execute();
@@ -51,32 +81,39 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="section_header">
             <h3 class="section_title">Browse by Category</h3>
         </div>
-        <div class="categories">
-    <div class="category" data-name="Sofa">
-        <img src="./assets/image/icons/sofa.png" alt="" class="category_icon" />
-        <p class="category_name">Sofa</p>
+        <form method="POST" id="categoryForm" action="?controller=product&action=index">
+    <input type="hidden" name="category" id="categoryInput">
+    <div class="categories">
+        <button type="submit" class="category <?= !isset($_SESSION['selected_category']) ? 'active' : '' ?>" data-name="">
+            <img src="./assets/image/icons/all.png" alt="" class="category_icon" />
+            <p class="category_name">Tất cả</p>
+        </button>
+        <button type="submit" class="category <?= isset($_SESSION['selected_category']) && $_SESSION['selected_category'] === 'Sofa' ? 'active' : '' ?>" data-name="Sofa">
+            <img src="./assets/image/icons/sofa.png" alt="" class="category_icon" />
+            <p class="category_name">Sofa</p>
+        </button>
+        <button type="submit" class="category <?= isset($_SESSION['selected_category']) && $_SESSION['selected_category'] === 'Giường' ? 'active' : '' ?>" data-name="Giường">
+            <img src="./assets/image/icons/door.png" alt="" class="category_icon" />
+            <p class="category_name">Giường</p>
+        </button>
+        <button type="submit" class="category <?= isset($_SESSION['selected_category']) && $_SESSION['selected_category'] === 'Đèn' ? 'active' : '' ?>" data-name="Đèn">
+            <img src="./assets/image/icons/light.png" alt="" class="category_icon" />
+            <p class="category_name">Đèn</p>
+        </button>
+        <button type="submit" class="category <?= isset($_SESSION['selected_category']) && $_SESSION['selected_category'] === 'Nệm' ? 'active' : '' ?>" data-name="Nệm">
+            <img src="./assets/image/icons/window.png" alt="" class="category_icon" />
+            <p class="category_name">Nệm</p>
+        </button>
+        <button type="submit" class="category <?= isset($_SESSION['selected_category']) && $_SESSION['selected_category'] === 'Ghế' ? 'active' : '' ?>" data-name="Ghế">
+            <img src="./assets/image/icons/desk.png" alt="" class="category_icon" />
+            <p class="category_name">Ghế</p>
+        </button>
+        <button type="submit" class="category <?= isset($_SESSION['selected_category']) && $_SESSION['selected_category'] === 'Bàn' ? 'active' : '' ?>" data-name="Bàn">
+            <img src="./assets/image/icons/chair.png" alt="" class="category_icon" />
+            <p class="category_name">Bàn</p>
+        </button>
     </div>
-    <div class="category" data-name="Giường">
-        <img src="./assets/image/icons/door.png" alt="" class="category_icon" />
-        <p class="category_name">Giường</p>
-    </div>
-    <div class="category" data-name="Đèn">
-        <img src="./assets/image/icons/light.png" alt="" class="category_icon" />
-        <p class="category_name">Đèn</p>
-    </div>
-    <div class="category" data-name="Nệm">
-        <img src="./assets/image/icons/window.png" alt="" class="category_icon" />
-        <p class="category_name">Nệm</p>
-    </div>
-    <div class="category" data-name="Ghế">
-        <img src="./assets/image/icons/desk.png" alt="" class="category_icon" />
-        <p class="category_name">Ghế</p>
-    </div>
-    <div class="category" data-name="Bàn">
-        <img src="./assets/image/icons/chair.png" alt="" class="category_icon" />
-        <p class="category_name">Bàn</p>
-    </div>
-</div>
+</form>
 
     </div>
 </section>
@@ -111,7 +148,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <?php if ($totalPages > 1): ?>
         <div class="pagination">
             <?php if ($page > 1): ?>
-                <a href="?controller=product&action=index&page=<?= $page - 1 ?>">&laquo; Prev</a>
+                <a href="?controller=product&action=index&page=<?= $page - 1 ?>">« Trước</a>
             <?php endif; ?>
 
             <?php for ($i = 1; $i <= $totalPages; $i++): ?>
@@ -119,7 +156,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <?php endfor; ?>
 
             <?php if ($page < $totalPages): ?>
-                <a href="?controller=product&action=index&page=<?= $page + 1 ?>">Next &raquo;</a>
+                <a href="?controller=product&action=index&page=<?= $page + 1 ?>">Tiếp »</a>
             <?php endif; ?>
         </div>
     <?php endif; ?>

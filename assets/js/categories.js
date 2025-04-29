@@ -1,19 +1,16 @@
 document.querySelectorAll(".category").forEach((category) => {
-  category.addEventListener("click", () => {
-    const selectedName = category.getAttribute("data-name").toLowerCase();
-    document.querySelectorAll(".product_card").forEach((product) => {
-      const productName = product.querySelector("h4").textContent.toLowerCase();
-      if (productName.includes(selectedName)) {
-        product.style.display = "block";
-      } else {
-        product.style.display = "none";
-      }
-    });
+  category.addEventListener("click", (e) => {
+      e.preventDefault(); // Ngăn hành vi mặc định của button
+      const selectedName = category.getAttribute("data-name");
 
-    // Highlight icon được chọn
-    document
-      .querySelectorAll(".category")
-      .forEach((c) => c.classList.remove("active"));
-    category.classList.add("active");
+      // Cập nhật trường ẩn với danh mục được chọn
+      document.getElementById("categoryInput").value = selectedName;
+
+      // Highlight danh mục được chọn
+      document.querySelectorAll(".category").forEach((c) => c.classList.remove("active"));
+      category.classList.add("active");
+
+      // Gửi biểu mẫu
+      document.getElementById("categoryForm").submit();
   });
 });
