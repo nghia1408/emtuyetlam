@@ -13,7 +13,7 @@
         public $role_id;
         public $gender;
 
-        function __construct($id, $name, $email, $phone, $address, $username, $password, $gender, $role_id) {
+        function __construct($id, $name, $email, $phone, $address, $username, $password, $role_id, $gender) {
             $this->id = $id;
             $this->name = $name;
             $this->email = $email;
@@ -33,7 +33,7 @@
             $stmt->execute([$username, $password]);
             $user = $stmt->fetch();
             if($user) {
-                return new User($user['id'], $user['name'], $user['email'], $user['phone'], $user['address'], $user['gender'], $user['username'], $user['password'],$user['gender'], $user['role_id']);
+                return new User($user['id'], $user['name'], $user['email'], $user['phone'], $user['address'], $user['username'], $user['password'], $user['role_id'], $user['gender'] );
             }else {
                 return null;
             }
@@ -72,7 +72,7 @@
 
                 $user = $stmt->fetch();
                 if (!$user) return null;
-                return new User($user['id'], $user['name'], $user['email'], $user['phone'], $user['address'], $user['username'], $user['password'], $user['role_id']);
+                return new User($user['id'], $user['name'], $user['email'], $user['phone'], $user['address'], $user['username'], $user['password'], $user['role_id'], $user['gender']);
             } catch (PDOException $ex) {
                 return null;
             }
