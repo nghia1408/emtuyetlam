@@ -347,7 +347,7 @@
                 <div class="trending_content">
                     <p class="trending_p">categories</p>
                     <h2 class="trending_title">SOFA đẹp giành cho bạn</h2>
-                    <a href="?controller=product&action=product_all" class="trending_btn">Buy Now!</a>
+                    <a href="?controller=product&action=index" class="trending_btn">Buy Now!</a>
                 </div>
                 <img src="./assets/image/sofa.png" alt="" class="sofa" />
             </div>

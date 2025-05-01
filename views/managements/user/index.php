@@ -1,4 +1,10 @@
 <!-- làm tại đây -->
+<?php
+    if (!isUserLoggedIn()) {
+    header("Location: ?controller=home&action=index");
+    exit;
+    }
+?>
 <div class="app-content">
     <div class="app-content-header">
         <h1 class="app-content-headerText">Manage user</h1>

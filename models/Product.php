@@ -38,7 +38,7 @@
                     $stmt->bindParam(':category', $category);
                 } else {
                     // Nếu không có danh mục, lấy tất cả sản phẩm
-                    $stmt = $db->prepare("SELECT products.*, category.name AS category_name FROM products JOIN category ON products.category_id = category.id;");
+                    $stmt = $db->prepare("SELECT products.*, category.name AS category_name FROM products JOIN category ON products.category_id = category.id ORDER BY id DESC;");
                 }
 
                 $stmt->execute();

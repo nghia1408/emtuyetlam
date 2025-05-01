@@ -153,7 +153,7 @@
                     setUserLogin(serialize($user));
         
                     // sau khi cập nhật đưa tới trang 
-                    header("Location: index.php?controller=home&action=user");
+                    header("Location: ?controller=home&action=user");
                     exit;
                 } else {
                     $this->render('editProfile', [

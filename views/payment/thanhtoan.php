@@ -1,13 +1,8 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-
-if (!isset($_SESSION['user_id'])) {
-    header('Location: index.php?controller=account&action=login');
+if (!isUserLoggedIn()) {
+    header("Location: index.php?controller=account&action=login");
     exit;
 }
-
 $cart_items = $data['cart_items'];
 $total_amount = 0;
 ?>

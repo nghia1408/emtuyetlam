@@ -1,4 +1,10 @@
 <!-- làm tại đây -->
+<?php
+    if (!isUserLoggedIn()) {
+    header("Location: ?controller=home&action=index");
+    exit;
+    }
+?>
 <div class="app-content">
     <div class="app-content-header">
         <h1 class="app-content-headerText">Oders</h1>
@@ -73,7 +79,7 @@
     <div class="products-area-wrapper tableView">
         <div class="products-header">
             <div class="product-cell image">
-                Customer Name
+                Mã đơn hàng
                 <button class="sort-button">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +96,7 @@
             </div>
             <!-- hêlo -->
             <div class="product-cell category">
-                Products<button class="sort-button">
+                Tên khách hàng<button class="sort-button">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
@@ -105,7 +111,7 @@
                 </button>
             </div>
             <div class="product-cell status-cell">
-                Shipping<button class="sort-button">
+                Trạng thái<button class="sort-button">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
@@ -120,7 +126,7 @@
                 </button>
             </div>
             <div class="product-cell sales">
-                Contact|Email<button class="sort-button">
+                Địa chỉ<button class="sort-button">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
@@ -135,7 +141,7 @@
                 </button>
             </div>
             <div class="product-cell stock">
-                Address<button class="sort-button">
+                Số điện thoại<button class="sort-button">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
@@ -150,7 +156,7 @@
                 </button>
             </div>
             <div class="product-cell price">
-                Details<button class="sort-button">
+                Giá tiền<button class="sort-button">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
@@ -165,49 +171,32 @@
                 </button>
             </div>
         </div>
-        <div class="products-row">
-            <div class="product-cell image">
-                <span>lethanhphu</span>
-            </div>
-            <div class="product-cell category">
-                <span class="cell-label">Products:</span>Bàn học
-            </div>
-            <div class="product-cell status-cell">
-                <span class="cell-label">Shipping</span>
-                <span class="status active">Đang tiến hành</span>
-            </div>
-            <div class="product-cell sales">
-                <span class="cell-label">Contact|Email</span>lphu339@gmail.com
-            </div>
-            <div class="product-cell stock">
-                <span class="cell-label">Addres</span>hcm
-            </div>
-            <div class="product-cell price">
-                <span class="cell-label">Details</span>5000
-            </div>
-
+        <?php foreach ($orders as $order): ?>
+    <div class="products-row">
+        <div class="product-cell image">
+            <span><?= htmlspecialchars($order['order_id']) ?></span>
         </div>
-        <div class="products-row">
-            <div class="product-cell image">
-                <span>Phú</span>
-            </div>
-            <div class="product-cell category">
-                <span class="cell-label">Products:</span>Ghế
-            </div>
-            <div class="product-cell status-cell">
-                <span class="cell-label">Shipping:</span>
-                <span class="status disabled">Đã Xong</span>
-            </div>
-            <div class="product-cell sales">
-                <span class="cell-label">Contact|Email</span>lephu2409@gmail.com
-            </div>
-            <div class="product-cell stock">
-                <span class="cell-label">Address</span>hcm
-            </div>
-            <div class="product-cell price">
-                <span class="cell-label">Details</span>5000
-            </div>
+        <div class="product-cell category">
+            <span class="cell-label">Tên khách hàng:</span> <?= htmlspecialchars($order['customer_name']) ?>
         </div>
+        <div class="product-cell status-cell">
+            <span class="cell-label">Trạng thái</span>
+            <span class="status <?= $order['payment_status'] === 'paid' ? 'active' : 'disabled' ?>">
+                <?= htmlspecialchars($order['payment_status'] === 'paid' ? 'Đã thanh toán' : 'Chưa thanh toán') ?>
+            </span>
+        </div>
+        <div class="product-cell sales">
+            <span class="cell-label">Địa chỉ</span> 
+            <?= htmlspecialchars($order['address'] . ', ' . $order['ward'] . ', ' . $order['district'] . ', ' . $order['province']) ?>
+        </div>
+        <div class="product-cell stock">
+            <span class="cell-label">Số điện thoại</span> <?= htmlspecialchars($order['phone']) ?>
+        </div>
+        <div class="product-cell price">
+            <span class="cell-label">Giá tiền</span> <?= number_format($order['total_amount'], 0, ',', '.') ?>₫
+        </div>
+    </div>
+    <?php endforeach; ?>
     </div>
 </div>
 </div>

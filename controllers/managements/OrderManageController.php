@@ -4,6 +4,7 @@ include_once('controllers/BaseController.php');
 include_once('models/User.php');
 include_once('utils/account.php');
 include_once('utils/redirect.php');
+include_once('models/Order.php');
 
 class OrderManageController extends BaseController
 {
@@ -15,7 +16,10 @@ class OrderManageController extends BaseController
 
     public function index(): void
     {
-        $this->render('index',[],'admin');
+        $orderModel = new Order();
+        $orders = $orderModel->getAll(); // Gọi hàm getAll để lấy toàn bộ đơn hàng
+
+        $this->render('index', ['orders' => $orders], 'admin'); // Truyền dữ liệu vào view
     }
 
 }

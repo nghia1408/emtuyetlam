@@ -1,5 +1,10 @@
   <!-- làm tại đây -->
-
+<?php
+    if (!isUserLoggedIn()) {
+    header("Location: ?controller=home&action=index");
+    exit;
+    }
+?>
   
 
 
