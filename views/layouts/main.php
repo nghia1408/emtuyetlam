@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://unpkg.com/scrollreveal"></script>
     <link rel="stylesheet" href="./assets/css/styles.css" />
-    <title>Home - Exclusive E-Commerce Website</title>
+    <title>Home - CASAFINE Website</title>
 </head>
 <body>
 <div class="top_nav">

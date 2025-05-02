@@ -2,11 +2,11 @@
     $controllers = array(
         'account' => ['login', 'register', 'logout', 'changePassword', 'updateProfile'],
         'home' => ['index', 'error','user'],
-        'payment' => ['thanhtoan'],
+        'payment' => ['thanhtoan', 'thanhtoan_tienmat'],
         'about' => ['index'],
         'contact' => ['index'],
         'cart' => ['index', 'add', 'remove'],
-        'order' => ['index'],
+        'order' => ['success','placeOrder','checkout'],
         'product' => ['index','search','detail'],
         'dashboard' => ['index','logout'],
         'managements' =>
