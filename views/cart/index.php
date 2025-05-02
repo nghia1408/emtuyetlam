@@ -1,7 +1,5 @@
 <section class="section">
     <div class="container">
-        
-
         <div class="cart">
             <div class="cart_header">
                 <p class="cart_header_id">Mã Sản Phẩm</p>
