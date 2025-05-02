@@ -28,6 +28,8 @@
                     <input type="submit" name="btn_submit" class="form_btn" value="Đăng Nhập"/>
                 </div>
                 <div class="form_group">
+                <label><input type="checkbox" name="remember_me"> Ghi nhớ đăng nhập</label>
+
               <span
               >Bạn chưa có tài khoản?
                 <a href="?controller=account&action=register" class="form_auth_link"
