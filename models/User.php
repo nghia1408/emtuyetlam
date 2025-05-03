@@ -158,17 +158,17 @@
     }
     
     
-    function setUserLogin($userSerialized) {
-        $_SESSION['user'] = $userSerialized; // Lưu vào session
-    }
+    // function setUserLogin($userSerialized) {
+    //     $_SESSION['user'] = $userSerialized; // Lưu vào session
+    // }
     
-    function getUserLoggedIn() {
-        return isset($_SESSION['user']) ? unserialize($_SESSION['user']) : null;
-    }
+    // function getUserLoggedIn() {
+    //     return isset($_SESSION['user']) ? unserialize($_SESSION['user']) : null;
+    // }
     
-    function setUserLogout() {
-        unset($_SESSION['user']);
-    }
+    // function setUserLogout() {
+    //     unset($_SESSION['user']);
+    // }
     
     
 }
