@@ -77,7 +77,7 @@ $total_amount = 0;
                         <div class="cf-bank-info" id="bank-info" style="display: none;">
                             <h4>TÀI KHOẢN NGÂN HÀNG:</h4>
                             <p><strong>Vietcombank - (Ngân hàng TMCP Ngoại Thương Việt Nam)</strong></p>
-                            <p><strong>Chủ tài khoản:</strong> LÊ THÀNH PHÚ</p>
+                            <p><strong>Chủ tài khoản:</strong> CASAFINE</p>
                             <p><strong>Số tài khoản:</strong> 99344097177</p>
                         </div>
                     </div>
