@@ -102,8 +102,6 @@
             <span class="cell-label">Password:</span><?= $user['password']; ?>
         </div>
         <div class="product-cell price">
-            <button class="action-button add">+</button>
-            <button class="action-button edit">✏️</button>
             <!-- Nút Xóa -->
     <form action="?controller=userManage&action=deleteUser&id=<?= $user['id']; ?>" method="POST" style="display:inline;">
         <button type="submit" class="action-button delete">🗑️</button>
