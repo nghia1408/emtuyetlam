@@ -130,5 +130,42 @@ class OrderController extends BaseController
             exit;
         }
     }
+
+    public function history()
+{
+    if (!isset($_SESSION['user_id'])) {
+        header('Location: index.php?controller=account&action=login');
+        exit;
+    }
+
+    $user_id = $_SESSION['user_id'];
+    $orders = $this->orderModel->getUserOrders($user_id);
+
+    $data = ['orders' => $orders];
+    $this->render('history', $data); // views/order/history.php
+}
+
+
+    public function detail()
+{
+    if (!isset($_GET['id'])) {
+        header('Location: index.php?controller=order&action=history');
+        exit;
+    }
+
+    $orderId = $_GET['id'];
+    $order = $this->orderModel->getOrderById($orderId);
+    $items = $this->orderModel->getOrderItems($orderId);
+
+    if (!$order || $order['user_id'] != $_SESSION['user_id']) {
+        echo "Không tìm thấy đơn hàng.";
+        return;
+    }
+
+    $data = ['order' => $order, 'items' => $items];
+    $this->render('detail', $data); // views/order/detail.php
+}
+
+
 }
 ?>

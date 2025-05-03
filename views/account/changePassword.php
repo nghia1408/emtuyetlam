@@ -4,6 +4,7 @@
         <ul>
             <li ><a href="?controller=home&action=user">Hồ sơ</a></li>
             <li class="ep-active"><a href="?controller=account&action=changePassword">Đổi mật khẩu</a></li>
+            <li class=""><a href="?controller=order&action=history">Lịch sử mua hàng</a></li>
         </ul>
     </div>
 

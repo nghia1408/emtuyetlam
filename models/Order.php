@@ -84,5 +84,21 @@ class Order {
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
+public function history()
+{
+    if (!isset($_SESSION['user_id'])) {
+        header('Location: index.php?controller=account&action=login');
+        exit;
+    }
+
+    $user_id = $_SESSION['user_id'];
+    $orders = $this->orderModel->getUserOrders($user_id);
+
+    $data = ['orders' => $orders];
+    $this->render('history', $data); // views/order/history.php
+}
+
+
 }    
 ?>

@@ -6,7 +6,7 @@
         'about' => ['index'],
         'contact' => ['index'],
         'cart' => ['index', 'add', 'remove'],
-        'order' => ['success','placeOrder','checkout'],
+        'order' => ['success','placeOrder','checkout', 'history', 'detail'],
         'product' => ['index','search','detail'],
         'dashboard' => ['index','logout'],
         'managements' =>
