@@ -15,6 +15,7 @@
                 'userManage' => ['index', 'deleteUser'],
                 'orderManage' => ['index'],
                 'add_productManage' => ['index'],
+                'edit_productManage' => ['index'],
             )
 
     ); // Các controllers trong hệ thống và các action có thể gọi ra từ controller đó.

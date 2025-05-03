@@ -28,6 +28,7 @@
     <div class="app-content-actions">
         <input class="search-bar" placeholder="Search..." type="text" />
         <div class="app-content-actions-wrapper">
+        <a href="?controller=add_productManage&action=index"><button class="action-button filter jsFilter"><span>Add_product</span></button></a>
             <div class="filter-button-wrapper">
                 <button class="action-button filter jsFilter">
                 <span>View</span
@@ -191,8 +192,7 @@
                 <span class="cell-label">Giá:</span> <?= $product->price; ?>$
             </div>
             <div class="product-cell price">
-                <a href="?controller=add_productManage&action=index"><button class="action-button add">+</button></a>
-                <button class="action-button edit">✏️</button>
+                <a href="?controller=edit_productManage&action=index&id=<?= $product->id; ?>"><button class="action-button edit">✏️</button></a>
                 <!-- Sửa phần form xóa sản phẩm -->
     <form action="?controller=productManage&action=deleteProduct" method="POST" style="display:inline;">
         <!-- Thêm trường hidden để gửi id sản phẩm -->

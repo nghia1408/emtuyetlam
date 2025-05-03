@@ -67,28 +67,34 @@
         /**
          * @return mixed
          */
-        public static function getProductById($id) {
+        public static function getProductById($id)
+    {
+        try {
             $db = DB::getInstance();
-            $stmt = $db->prepare("SELECT * FROM products WHERE id = :id");
+            $stmt = $db->prepare("SELECT id, name, description, price, category_id, image, discount, quantity FROM products WHERE id = :id");
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
-        
+
             if ($stmt->rowCount() > 0) {
-                $item = $stmt->fetch();
+                $item = $stmt->fetch(PDO::FETCH_ASSOC);
                 return [
                     'id' => $item['id'],
                     'name' => $item['name'],
-                    'description' => $item['description'],
+                    'description' => $item['description'] ?? '',
                     'price' => $item['price'],
-                    'discount' => $item['discount'],
-                    'quantity' => $item['quantity'],
                     'category_id' => $item['category_id'],
-                    'img' => $item['image']
+                    'image' => $item['image'],
+                    'discount' => $item['discount'] ?? 0,
+                    'quantity' => $item['quantity'] ?? 0
                 ];
             }
-        
+
+            return null;
+        } catch (PDOException $e) {
+            error_log("Lỗi getProductById: " . $e->getMessage());
             return null;
         }
+    }
         
 
         // Phương thức tìm kiếm sản phẩm
@@ -155,7 +161,26 @@ public static function deleteProductById($id): bool
     return $stmt->execute([$id]);
 }
 
-
+public static function updateProduct($id, $name, $desc, $price, $cate_id, $img)
+    {
+        try {
+            $db = DB::getInstance();
+            $stmt = $db->prepare("UPDATE products 
+                                SET name = :name, description = :desc, price = :price, 
+                                    category_id = :cate_id, image = :img 
+                                WHERE id = :id");
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->bindParam(':name', $name);
+            $stmt->bindParam(':desc', $desc);
+            $stmt->bindParam(':price', $price, PDO::PARAM_STR);
+            $stmt->bindParam(':cate_id', $cate_id, PDO::PARAM_INT);
+            $stmt->bindParam(':img', $img);
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            error_log("Lỗi updateProduct: " . $e->getMessage());
+            return false;
+        }
+    }
 
     
 }
