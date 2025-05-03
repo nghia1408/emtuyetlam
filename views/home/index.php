@@ -517,58 +517,58 @@
             <div class="gallery">
                 <div class="gallery_item gallery_item_1">
                     <img
-                            src="./assets/image/gallery/gallery-1.png"
+                            src="./assets/image/gallery/gallery-1.jpg"
                             alt=""
                             class="gallery_item_img"
                     />
                     <div class="gallery_item_content">
-                        <div class="gallery_item_title">Playstation 5</div>
+                        <div class="gallery_item_title">Sofa bọc nhung cao cấp</div>
                         <p class="gallery_item_p">
-                            Lorem ipsum dolor sit amet consectetur adipisicing.
+                        Thoải mái & sang trọng.
                         </p>
-                        <a href="#" class="gallery_item_link">SHOP NOW</a>
+                        <a href="?controller=product&action=index" class="gallery_item_link">SHOP NOW</a>
                     </div>
                 </div>
                 <div class="gallery_item gallery_item_2">
                     <img
-                            src="./assets/image/gallery/gallery-2.png"
+                            src="./assets/image/gallery/gallery-2.jpg"
                             alt=""
                             class="gallery_item_img"
                     />
                     <div class="gallery_item_content">
-                        <div class="gallery_item_title">Playstation 5</div>
+                        <div class="gallery_item_title">Đèn trần phong cách Bắc Âu</div>
                         <p class="gallery_item_p">
-                            Lorem ipsum dolor sit amet consectetur adipisicing.
+                        Tối giản, tinh tế.
                         </p>
-                        <a href="#" class="gallery_item_link">SHOP NOW</a>
+                        <a href="?controller=product&action=index" class="gallery_item_link">SHOP NOW</a>
                     </div>
                 </div>
                 <div class="gallery_item gallery_item_3">
                     <img
-                            src="./assets/image/gallery/gallery-3.png"
+                            src="./assets/image/gallery/gallery-3.jpg"
                             alt=""
                             class="gallery_item_img"
                     />
                     <div class="gallery_item_content">
-                        <div class="gallery_item_title">Playstation 5</div>
+                        <div class="gallery_item_title">Giường gỗ sồi tự nhiên</div>
                         <p class="gallery_item_p">
-                            Lorem ipsum dolor sit amet consectetur adipisicing.
+                        Cho giấc ngủ trọn vẹn.
                         </p>
-                        <a href="#" class="gallery_item_link">SHOP NOW</a>
+                        <a href="?controller=product&action=index" class="gallery_item_link">SHOP NOW</a>
                     </div>
                 </div>
                 <div class="gallery_item gallery_item_4">
                     <img
-                            src="./assets/image/gallery/gallery-4.png"
+                            src="./assets/image/gallery/gallery-4.jpg"
                             alt=""
                             class="gallery_item_img"
                     />
                     <div class="gallery_item_content">
-                        <div class="gallery_item_title">Playstation 5</div>
+                        <div class="gallery_item_title">Tủ đầu giường tối giản</div>
                         <p class="gallery_item_p">
-                            Lorem ipsum dolor sit amet consectetur adipisicing.
+                        Tiện dụng và đẹp mắt.
                         </p>
-                        <a href="#" class="gallery_item_link">SHOP NOW</a>
+                        <a href="?controller=product&action=index" class="gallery_item_link">SHOP NOW</a>
                     </div>
                 </div>
             </div>
