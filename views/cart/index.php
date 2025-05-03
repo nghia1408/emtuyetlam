@@ -12,7 +12,12 @@
 
             <!-- Hiển thị sản phẩm động -->
             <?php if (!empty($data['cart_items'])): ?>
+                 <?php $total_price = 0; // Khởi tạo biến tổng giá ?>
                 <?php foreach ($data['cart_items'] as $item): ?>
+                     <?php 
+                        $item_total = $item['price'] * $item['quantity']; // Tính tổng cho từng mặt hàng
+                        $total_price += $item_total; // Cộng dồn vào tổng
+                    ?>
                     <div class="cart-item">
                         <p class="cart_id"><?php echo htmlspecialchars($item['id']); ?></p>
                         <p class="cart_title"><?php echo htmlspecialchars($item['name']); ?></p>
@@ -22,6 +27,9 @@
                         <a href="?controller=cart&action=remove&id=<?php echo urlencode($item['id']); ?>" class="cart_delete">Xóa</a>
                     </div>
                 <?php endforeach; ?>
+                 <div class="cart-total">
+                    <p><strong>Tổng cộng:</strong> <?php echo number_format($total_price, 0, ',', '.') . ' VND'; ?></p>
+                </div>
             <?php else: ?>
                 <p>Giỏ hàng của bạn đang trống.</p>
             <?php endif; ?>
