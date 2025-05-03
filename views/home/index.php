@@ -94,7 +94,7 @@
                                 </div>
                                 <div class="card_body">
                                     <h3 class="card_title"><?= $item->name ?></h3>
-                                    <p class="card_price"><?= $discount_price . "$" ?></p>
+                                    <p class="card_price"><?= number_format($discount_price, 0, ',', '.') . ' Đ' ?></p>
                                     <div class="card_ratings">
                                         <div class="card_stars">
                                             <svg
@@ -256,7 +256,7 @@
                             </div>
                             <div class="card_body">
                                 <h3 class="card_title"><?= $item->name ?></h3>
-                                <p class="card_price"><?= $discount_price . "$" ?></p>
+                                <p class="card_price"><?= number_format($discount_price, 0, ',', '.') . ' Đ' ?></p>
                                 <div class="card_ratings">
                                     <div class="card_stars">
                                         <svg
@@ -420,7 +420,7 @@
                             </div>
                             <div class="card_body">
                                 <h3 class="card_title"><?= $item->name ?></h3>
-                                <p class="card_price"><?= $discount_price . "$" ?></p>
+                                <p class="card_price"><?= number_format($discount_price, 0, ',', '.') . ' Đ' ?></p>
                                 <div class="card_ratings">
                                     <div class="card_stars">
                                         <svg
