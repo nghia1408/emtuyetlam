@@ -2,7 +2,7 @@
     <?php if (isset($product)): ?>
         <div class="product-images">
             <div class="main-image">
-                <img src="<?= htmlspecialchars($product['img']) ?>" alt="<?= htmlspecialchars($product['name']) ?>" class="main-product-image" />
+                <img src="<?= htmlspecialchars($product['image'] ?? ''); ?>" alt="<?= htmlspecialchars($product['name']) ?>" class="main-product-image" />
             </div>
         </div>
 
@@ -21,7 +21,7 @@
                     <input type="hidden" name="product_id" value="<?= htmlspecialchars($product['id']) ?>">
                     <input type="hidden" name="product_name" value="<?= htmlspecialchars($product['name']) ?>">
                     <input type="hidden" name="product_price" value="<?= $product['price'] ?>">
-                    <input type="hidden" name="product_image" value="<?= htmlspecialchars($product['img']) ?>">
+                    <input type="hidden" name="product_image" value="<?= htmlspecialchars($product['image'] ?? ''); ?>">
 
                     <!-- <label for="colours">Màu sắc:</label>
                     <select id="colours" name="colours">
