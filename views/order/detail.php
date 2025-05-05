@@ -87,7 +87,7 @@ strong {
     </tr>
     <?php foreach ($items as $item): ?>
     <tr>
-        <td><img src="uploads/<?= $item['image'] ?>" width="60"></td>
+        <td><img src="<?= htmlspecialchars($item['image']); ?>" width="60"></td>
         <td><?= $item['product_name'] ?></td>
         <td><?= $item['quantity'] ?></td>
         <td><?= number_format($item['price'], 0, ',', '.') ?>₫</td>
