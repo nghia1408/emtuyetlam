@@ -168,17 +168,17 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="service">
             <img src="./assets/image/icons/service-1.png" alt="" class="service_img" />
             <h3 class="service_title">GIAO HÀNG NHANH VÀ MIỄN PHÍ</h3>
-            <p class="service_p">Lorem ipsum dolor sit amet consectetur.</p>
+            <p class="service_p">Miễn phí vận chuyển cho mọi đơn hàng toàn quốc.</p>
         </div>
         <div class="service">
             <img src="./assets/image/icons/service-2.png" alt="" class="service_img" />
             <h3 class="service_title">HỖ TRỢ 24/7</h3>
-            <p class="service_p">Lorem ipsum dolor sit amet consectetur.</p>
+            <p class="service_p">Đội ngũ chăm sóc khách hàng luôn sẵn sàng hỗ trợ bạn mọi lúc.</p>
         </div>
         <div class="service">
             <img src="./assets/image/icons/service-3.png" alt="" class="service_img" />
             <h3 class="service_title">CHÍNH SÁCH BẢO HÀNH</h3>
-            <p class="service_p">Lorem ipsum dolor sit amet consectetur.</p>
+            <p class="service_p">Cam kết bảo hành chính hãng cho tất cả sản phẩm.</p>
         </div>
     </div>
 </section>
